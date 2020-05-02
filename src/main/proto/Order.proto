@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package com.poc.grpc.generate;
+import "HelloWorld.proto";
+
+message DailyShippedOrders_v2 {
+   string shipFileName=1;
+     string salesOrderNum = 2;
+   int32 orderLineNum=3;
+     string sONLIN=4;
+   Date orderDate=5;
+     Date invoiceDate=6;
+   Date txnDateTm=7;
+     Date txnDate=8;
+   string sellerID=9;
+     string txnType=10;
+   int32 shipQty=11;
+     int32 itemID=12;
+   string itemUPC=13;
+     double custTenderAmt=14;
+   double netPayableAmt=15;
+     double comAmt=16;
+   double effComRate=17;
+     string itemName=18;
+   string custFirstName=19;
+     string custLastName=20;
+   string custEmail=21;
+     string pmtMethod=22;
+   string custCity=23;
+     string custState=24;
+   string custZipCode=25;
+     string reasonCode=26;
+   string reasonDesc=27;
+     string productType=28;
+   string flexComRuleID=29;
+     string walmartPONum=30;
+   int32 walmartPOLineNum=31;
+     string productTaxCode=32;
+   double taxOnSalesRevAmt=33;
+     double taxOnShipRevAmt=34;
+   double taxOnRefundSalesAmt=35;
+     double taxOnShipRefundAmt=36;
+   double taxTotalAmt=37;
+     string taxWithheldFlag=38;
+   string specCategory=39;
+     string contractCategory=40;
+   string addAdjustmentNotes=41;
+     double netShipRevAmt=42;
+   double origItemPriceAmt=43;
+     double origComAmt=44;
+   double itemPriceAmt=45;
+     double shipChargeAmt=46;
+   string returnReasonCode=47;
+     string returnReasonDesc=48;
+   double feeRevenueAmt=49;
+     double feeRefundAmt=50;
+   double taxOnFeeRevenueAmt=51;
+     double taxOnFeeRefundAmt=52;
+   string feeWithheldFlag=53;
+     string fulfillmentType=54;
+}
+
+message Date {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+}
+
+service OrderService {
+  rpc processOrder(DailyShippedOrders_v2) returns (HelloResponse);
+}
